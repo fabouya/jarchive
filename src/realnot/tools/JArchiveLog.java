@@ -68,10 +68,7 @@ public class JArchiveLog {
 
 			// get the property value and print it out
 			_pattern = prop.getProperty("pattern");
-			_directory = prop.getProperty("directory");
-			
-			_logger.info("Pattern : " + _pattern);
-			_logger.info("Directory : " + _directory);
+			_directory = prop.getProperty("directory");			
 			_dateFormat = prop.getProperty("dateformat");
 			_archiveDir = prop.getProperty("archivedir");						
 
@@ -223,7 +220,26 @@ public class JArchiveLog {
 		
 		Pattern pattern = Pattern.compile(_pattern);
 		
-		File rep = new File(directory);
+		// check source dir exist
+		
+		File rep = null;
+		
+		try
+		{
+			rep = new File(directory);
+		}
+		catch(NullPointerException e)
+		{
+			_logger.error("Bad directory : " + directory);
+			System.exit(1);
+		}
+		
+		if(!rep.exists())
+		{
+			_logger.error("Bad directory : " + directory);
+			System.exit(1);			
+		}
+		
 		
 		File[] fichiers = rep.listFiles(new FilenameFilter() 
 		{

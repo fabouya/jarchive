@@ -28,9 +28,9 @@ Values :
 
 **config file content : (config.properties)**    
 pattern=.+log.*  
-dateformat=yyyyMMddHHmmss  			(will create files named : <source file name>-yyyyMMddHHmmss.zip
-directory=C:\\test_fl\\logs  
-archivedir=C:\\test_fl\\logs\\archives  
+dateformat=yyyyMMddHHmmss  			(will create files named : <source file name>-yyyyMMddHHmmss.zip  
+directory=C:\\\\test_fl\\\\logs  
+archivedir=C:\\\\test_fl\\\\logs\\\\archives  
 
 **command :**  
 java -jar jarchive.jar -c config.properties -m exec -p
